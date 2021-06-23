@@ -1,3 +1,6 @@
 settings:
   console-prefix: '&8[&aGilliardCore&8]&r'
   chat-prefix: '&8[&aGilliard&8]&r'
+chat-prefixes:
+  talk: "&8[&bTalk&8]&r >> "
+  emergency: "&8[&c911&8]&r"
