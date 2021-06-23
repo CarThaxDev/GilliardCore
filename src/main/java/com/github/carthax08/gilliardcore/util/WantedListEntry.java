@@ -15,6 +15,7 @@ public class WantedListEntry {
     private Player addingPlayer;
     @Getter @Setter
     private Player wantedPlayer;
+
     public WantedListEntry(int wantedLevel, ArrayList<String> wantedFor, Player addingPlayer, Player wantedPlayer){
         if(wantedLevel < 1 || wantedLevel > 5){
             throw new IllegalArgumentException("Wanted Level provided for player " + wantedPlayer.getName() + " was not between 1 and 5!");
@@ -24,4 +25,14 @@ public class WantedListEntry {
         this.wantedReasons = wantedFor;
         this.wantedLevel = wantedLevel;
     }
+
+    @Override
+    public String toString(){
+        String toStringString = "&a";
+        toStringString += wantedPlayer.getDisplayName() + "\n";
+        toStringString += Util.computeWantedLevelStars(wantedLevel);
+        return toStringString;
+    }
+
+
 }
