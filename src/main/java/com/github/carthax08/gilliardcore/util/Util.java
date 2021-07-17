@@ -4,12 +4,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class Util {
@@ -23,24 +21,7 @@ public class Util {
             ArrayList<String> lore = new ArrayList<>();
             int wantedLevel = DataStore.wantedDataMap.get(player1).getWantedLevel();
             lore.add("&aWanted Level:");
-            switch (wantedLevel) {
-                case 1:
-                    lore.add("&6✯&7✯✯✯✯&r\n\n");
-                    break;
-                case 2:
-                    lore.add("&6✯✯&7✯✯✯&r\n\n");
-                    break;
-                case 3:
-                    lore.add("&6✯✯✯&7✯✯&r\n\n");
-                    break;
-                case 4:
-                    lore.add("&6✯✯✯✯&7✯&r\n\n");
-                    break;
-                case 5:
-                    lore.add("&6✯✯✯✯✯&r\n\n");
-                    break;
-            }
-
+            lore.add(computeWantedLevelStars(wantedLevel));
             lore.add("&aIssued By:\n" + DataStore.wantedDataMap.get(player1).getAddingPlayer());
             StringBuilder wantedReasons = new StringBuilder();
             for (String string : DataStore.wantedDataMap.get(player1).getWantedReasons()) {
@@ -50,6 +31,7 @@ public class Util {
 
             meta.setLore(lore);
             item.setItemMeta(meta);
+            inv.addItem(item);
         }
     }
 
