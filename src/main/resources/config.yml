@@ -4,3 +4,6 @@ settings:
 chat-prefixes:
   talk: "&8[&bTalk&8]&r >> "
   emergency: "&8[&c911&8]&r"
+discord-bot-settings:
+  bot-token: "TOKEN_GOES_HERE"
+  verified-role-id: "ROLE_ID_HERE"

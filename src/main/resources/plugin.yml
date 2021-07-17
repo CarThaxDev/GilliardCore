@@ -3,3 +3,7 @@ version: ${project.version}
 main: com.github.carthax08.gilliardcore.Main
 authors: [ CarThax08 ]
 description: Core plugin for Gilliard City RP
+commands:
+  verify:
+    description: Verify your discord
+    usage: /verify
