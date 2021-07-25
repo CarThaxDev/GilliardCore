@@ -44,10 +44,14 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        if(BotMain.isRunning)
         BotMain.shutdown();
         // Plugin shutdown logic
     }
     public static FileConfiguration getConfigObj(){
         return instance.getConfig();
+    }
+    public static Main getInstance(){
+        return instance;
     }
 }

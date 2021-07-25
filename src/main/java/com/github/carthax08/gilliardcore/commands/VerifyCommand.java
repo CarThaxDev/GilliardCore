@@ -23,7 +23,7 @@ public class VerifyCommand implements CommandExecutor {
             for(int i = 1; i < 9; i++){
                 randomCode.append(usableCharacters[random.nextInt(usableCharacters.length)]);
             }
-            DataStore.playerVerifyDataMap.put(player, randomCode.toString());
+            DataStore.playerVerifyDataMap.put(randomCode.toString(), player);
             player.sendMessage(ChatColor.GREEN + "Send /verify " + randomCode + " in the bot-commands channel in the Gilliard RP Discord or to the Gilliard RP Verification Discord Bot.");
         }
         return true;
