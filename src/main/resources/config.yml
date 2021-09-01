@@ -1,9 +1,14 @@
 settings:
   console-prefix: '&8[&aGilliardCore&8]&r'
   chat-prefix: '&8[&aGilliard&8]&r'
-chat-prefixes:
-  talk: "&8[&bTalk&8]&r >> "
-  emergency: "&8[&c911&8]&r"
+  emergency-prefix:
+chat-channels: "&8[&c911&8]&r"
+  talk:
+    prefix: "&8[&bTalk&8]&r >> "
+    distance: 20
+  shout:
+    prefix: "&8[&bShout&8]&r >> "
+    distance: 50
 discord-bot-settings:
   bot-token: "TOKEN_GOES_HERE"
   verified-role-id: "ROLE_ID_HERE"
