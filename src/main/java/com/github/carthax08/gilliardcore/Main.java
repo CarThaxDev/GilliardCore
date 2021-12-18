@@ -2,8 +2,7 @@ package com.github.carthax08.gilliardcore;
 
 import com.github.carthax08.gilliardcore.commands.VerifyCommand;
 import com.github.carthax08.gilliardcore.discord.jda.bot.BotMain;
-import com.github.carthax08.gilliardcore.economy.Economy;
-import com.github.carthax08.gilliardcore.economy.EconomyBuilder;
+import com.github.carthax08.gilliardcore.economy.workers.TaxWorker;
 import com.github.carthax08.gilliardcore.handlers.CustomChatHandler;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -13,7 +12,7 @@ import java.util.logging.Logger;
 
 public final class Main extends JavaPlugin {
     private static Main instance;
-    public static Economy econ;
+    private TaxWorker taxWorker;
 
     @Override
     public void onEnable() {
@@ -21,11 +20,12 @@ public final class Main extends JavaPlugin {
         getConfig().options().copyDefaults(true);
         saveDefaultConfig();
         instance = this;
-        econ = EconomyBuilder.build();
         String prefix = ChatColor.translateAlternateColorCodes('&', getConfig().getString("settings.console-prefix"));
         Logger logger = getServer().getLogger();
         logger.info(prefix + " Initializing...");
         logger.info(prefix + " Initializing Commands...");
+        taxWorker = new TaxWorker(getConfig().getInt("settings.tax-interval-seconds"));
+        taxWorker.start();
         try {
             //TODO: Command Initialization
             getCommand("verify").setExecutor(new VerifyCommand());
@@ -50,9 +50,11 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        if (BotMain.isRunning)
+        if (BotMain.isRunning) {
             BotMain.shutdown();
-        // Plugin shutdown logic
+        }
+        taxWorker.stop();
+
     }
 
     public static FileConfiguration getConfigObj() {

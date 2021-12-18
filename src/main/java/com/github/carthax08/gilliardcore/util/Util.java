@@ -41,7 +41,7 @@ public class Util {
             WantedListEntry entry = DataStore.wantedDataMap.get(player1);
             message.add(entry.toString());
         }
-        sender.sendMessage(message.toArray(String[]::new));
+        sender.sendMessage(message.     toArray(new String[0]));
     }
 
     public static String computeWantedLevelStars(int level) {

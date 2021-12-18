@@ -7,3 +7,9 @@ commands:
   verify:
     description: Verify your discord
     usage: /verify
+  911:
+    description: Send a message to emergency services
+    usage: /911 [message]
+  wantedlist:
+    description: Open the wanted list
+    usage: /wantedlist

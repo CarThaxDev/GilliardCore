@@ -10,13 +10,14 @@ public class TaxWorker {
     private long period;
     private BukkitTask workerTask;
 
-    public TaxWorker(long period){
+
+    public TaxWorker(int period){
         this.period = period;
     }
 
     public void workerMethod(){
         for(Player player : Bukkit.getOnlinePlayers()){
-            EconomyUtil.getBalanceForPlayer();
+            EconomyUtil.setBalanceForPlayer(EconomyUtil.getBalanceForPlayer(player) * Main.getConfigObj().getDouble("settings.tax-percent"));
         }
     }
     public void start(){

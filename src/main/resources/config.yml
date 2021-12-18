@@ -1,7 +1,9 @@
 settings:
   console-prefix: '&8[&aGilliardCore&8]&r'
   chat-prefix: '&8[&aGilliard&8]&r'
-  emergency-prefix:
+  emergency-prefix: ''
+  tax-percent: 07
+  tax-interval-seconds: 600
 chat-channels: "&8[&c911&8]&r"
   talk:
     prefix: "&8[&bTalk&8]&r >> "
